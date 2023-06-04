@@ -1,0 +1,13 @@
+def getSpeech(n, words):
+    for word in words:
+        str = word[0:2]
+        print(str + '... ' + word + '?')
+
+if __name__ == '__main__':
+    n = int(input())
+    words = [""] * n
+    i = 0
+    while i < n:
+        words[i] = str(input())
+        i += 1
+    getSpeech(n, words)
