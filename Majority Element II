@@ -1,0 +1,19 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        output = []
+        n = len(nums)
+        count_dict = {}
+        
+        # Count the occurrences of each element
+        for num in nums:
+            if num in count_dict:
+                count_dict[num] += 1
+            else:
+                count_dict[num] = 1
+        
+        # Find elements that appear more than n/3 times
+        for num, count in count_dict.items():
+            if count > n // 3:
+                output.append(num)
+        
+        return output
