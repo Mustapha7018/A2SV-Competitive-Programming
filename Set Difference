@@ -1,0 +1,12 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+line1 = int(input())
+eng = list(map(int, input().split()))
+english = set(eng)
+
+line2 = int(input())
+fren = list(map(int, input().split()))
+french = set(fren)
+
+eng_only = english.difference(french)
+print(len(eng_only))
