@@ -1,0 +1,18 @@
+num_shoes = int(input())
+shoe_sizes = list(map(int, input().split()))
+num_customers = int(input())
+
+shoe_inventory = {}
+
+for size in shoe_sizes:
+    shoe_inventory[size] = shoe_inventory.get(size, 0) + 1
+
+total_earned = 0
+
+for _ in range(num_customers):
+    desired_size, price = map(int, input().split())
+    if shoe_inventory.get(desired_size, 0) > 0:
+        total_earned += price
+        shoe_inventory[desired_size] -= 1
+
+print(total_earned)
