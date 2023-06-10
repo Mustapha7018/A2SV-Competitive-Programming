@@ -1,0 +1,10 @@
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        count = 0
+        frequency = {}
+
+        for num in nums:
+            count += frequency.get(num, 0)
+            frequency[num] = frequency.get(num, 0) + 1
+
+        return count
