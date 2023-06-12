@@ -1,0 +1,17 @@
+class Solution:
+    def countPairs(self, deliciousness: List[int]) -> int:
+        count = 0
+        deliciousness_count = Counter(deliciousness)
+        powers_of_two = [2 ** i for i in range(22)]  
+        
+        for num in deliciousness:
+            for power in powers_of_two:
+                target = power - num
+                if target in deliciousness_count:
+                    if target == num:
+                        count += deliciousness_count[target] - 1
+                    else:
+                        count += deliciousness_count[target]
+        
+        count //= 2  
+        return count % (10**9 + 7)
