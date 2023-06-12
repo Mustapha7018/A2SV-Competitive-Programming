@@ -1,0 +1,8 @@
+if __name__ == '__main__':
+    n = int(input())  
+    elements = tuple(map(int, input().split()))  
+
+    t = tuple(elements)
+
+    hash_t = hash(t)
+    print(hash_t)
