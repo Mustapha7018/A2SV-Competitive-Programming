@@ -1,0 +1,13 @@
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        inputs1 = list(map(int, input().split()))
+        inputs2 = list(map(int, input().split()))
+ 
+        a1, b1 = sorted(inputs1)
+        a2, b2 = sorted(inputs2)
+ 
+        if (a1 == a2 and b1 + b2 == a1) or (a1 == b2 and b1 + a2 == a1) or (b1 == a2 and a1 + b2 == b1) or (b1 == b2 and a1 + a2 == b1):
+            print("Yes")
+        else:
+            print("No")
