@@ -1,0 +1,31 @@
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+ 
+    neg = []
+    pos = []
+    zer = []
+ 
+    for num in arr:
+        if num < 0:
+            neg.append(num)
+        elif num > 0:
+            pos.append(num)
+        else:
+            zer.append(num)
+    
+    
+    if len(neg) % 2 == 0:
+        add = neg.pop()
+        zer.append(add)
+    
+    if len(pos) == 0:
+        val1 = neg.pop()
+        val2 = neg.pop()
+        pos.append(val1)
+        pos.append(val2)
+    
+    print(len(neg), *neg)
+    print(len(pos), *pos)
+    print(len(zer), *zer)
+    
