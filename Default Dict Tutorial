@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+n, m = map(int, input().split())
+
+word_pos = defaultdict(list)
+
+for i in range(n):
+    word = input()
+    word_pos[word].append(i + 1) 
+
+for _ in range(m):
+    word = input()
+
+    positions = word_pos[word]
+
+    if positions:
+        print(*positions)
+    else:
+        print(-1)
