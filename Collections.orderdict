@@ -1,0 +1,11 @@
+n = int(input())
+items = {}
+
+for _ in range(n):
+    item_data = input().split()
+    item_name = ' '.join(item_data[:-1])
+    price = int(item_data[-1])
+    items[item_name] = items.get(item_name, 0) + price
+
+for item_name, net_price in items.items():
+    print(item_name, net_price)
