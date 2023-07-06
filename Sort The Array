@@ -1,0 +1,36 @@
+# Accept Input
+# Create the sorted version of the input array
+# Find the first index where the input array and the sorted version differ then break
+# Find the last index where the input array and the sorted version differ break.
+# Check if both the first and the last index are -1. If so, then print 'yes' then '1 1'
+# Else: - Update the segment of the input array you have selected by the reversed version of itself.
+#       - After that, check if the new array is the same as the sorted version.
+
+n = int(input())
+gift_array = list(map(int, input().split()))
+
+sorted_version = sorted(gift_array)
+first = last = -1
+
+for i in range(n):
+    if gift_array[i] != sorted_version[i]:
+        first = i
+        break
+for i in range(n - 1, -1, -1):
+    if gift_array[i] != sorted_version[i]:
+        last = i
+        break
+
+if first == -1 and last == -1:
+    print("yes")
+    print("1 1")
+else:
+    gift_array[first: last + 1] = reversed(gift_array[first:last + 1])
+    answer = "yes"
+    for i in range(n):
+        if gift_array[i] != sorted_version[i]:
+            answer = "no"
+            break
+    print(answer)
+    if answer == "yes":
+        print(first + 1, last + 1)
