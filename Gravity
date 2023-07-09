@@ -1,0 +1,7 @@
+inp = int(input())
+
+arr = list(map(int, input().split()))
+
+arr.sort()
+str_nums = " ".join(map(str, arr))
+print(str_nums)
