@@ -1,0 +1,15 @@
+n, k = map(int, input().split())
+inp = list(map(int, input().split()))
+
+inp.sort()
+
+if k == 0:
+    if inp[0] > 1:
+        print(1)
+    else:
+        print(-1)
+
+elif k == n or inp[k] > inp[k - 1]:
+    print(inp[k - 1])
+else:
+    print(-1)
