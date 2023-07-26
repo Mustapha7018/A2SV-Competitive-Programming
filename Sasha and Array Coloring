@@ -1,0 +1,26 @@
+def arrayColoring():
+    input()
+    a = list(map(int, input().split()))
+    a.sort()
+    cost = 0
+
+    left = 0
+    right = len(a) - 1
+
+    while left <= right:
+        cost += a[right] - a[left]
+        left += 1
+        right -= 1
+
+    print(cost)
+
+t = int(input())
+for _ in range(t):
+    arrayColoring()
+
+    
+
+
+                
+
+            
