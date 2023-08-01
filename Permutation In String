@@ -1,0 +1,15 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        s1_counter = Counter(s1)
+        window_counter = Counter()
+
+        for i, char in enumerate(s2):
+            window_counter[char] += 1
+            if i >= len(s1):
+                if window_counter[s2[i - len(s1)]] == 1:
+                    del window_counter[s2[i - len(s1)]]
+                else:
+                    window_counter[s2[i - len(s1)]] -= 1
+            if window_counter == s1_counter:
+                return True
+        return False
