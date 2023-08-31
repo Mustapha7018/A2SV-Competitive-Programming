@@ -1,0 +1,22 @@
+class Solution:
+    def minimumRemoval(self, beans: List[int]) -> int:
+
+        beans.sort()
+
+        n = len(beans)
+        curr = 0
+        total = sum(beans)
+        minn = total
+        
+
+        for i, x in enumerate(beans):
+            next_ = x - curr
+            total -= next_ * (n - i)
+            minn = min(minn, total)
+            total += beans[i]
+            curr = beans[i]
+
+        return minn
+
+            
+        
