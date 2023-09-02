@@ -1,0 +1,14 @@
+def promo():
+    n,q = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort(reverse=True)
+    summ = [0] * (len(p)+1)
+    
+    for i in range(len(p)):
+        summ[i+1] = summ[i] + p[i]
+
+    for _ in range(q):
+        x,y = map(int, input().split())
+        print(summ[x]- summ[x-y])
+
+promo()
