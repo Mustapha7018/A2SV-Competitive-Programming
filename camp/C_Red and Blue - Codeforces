@@ -1,0 +1,28 @@
+def redAndBlue():
+    t = int(input())
+
+    for _ in range(t):
+        n = int(input())
+        r = list(map(int, input().split()))
+        m = int(input())
+        b = list(map(int, input().split()))
+        presum_r = [0] * len(r)
+        presum_b = [0] * len(b)
+
+        max_r = 0
+        max_b = 0
+
+        for i in range(len(r)):
+            presum_r[i] = presum_r[i-1] + r[i]
+            max_r = max(max_r, presum_r[i])
+        
+        for i in range(len(b)):
+            presum_b[i] = presum_b[i-1] + b[i]
+            max_b = max(max_b, presum_b[i])
+        
+        max_seq = max_r + max_b
+
+        print(max_seq)
+
+
+redAndBlue()
