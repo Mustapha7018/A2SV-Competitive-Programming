@@ -1,0 +1,21 @@
+def illya_and_queries():
+    s = input()
+    m = int(input())
+
+    presum = []
+    l_presum = 0
+    presum.append(l_presum)
+
+    for i in range(1, len(s)):
+        if s[i] == s[i-1]:
+            l_presum += 1
+        presum.append(l_presum)
+
+    for _ in range(m):
+        l, r = map(int, input().split())
+        print(presum[r - 1] - presum[l - 1])
+
+illya_and_queries()
+        
+
+
