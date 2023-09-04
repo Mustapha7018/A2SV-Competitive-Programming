@@ -1,0 +1,19 @@
+t = int(input())
+ 
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    count_list = [0] * (n + 1)
+    
+    found = False
+    
+    for num in a:
+        count_list[num] += 1
+        if count_list[num] == 3:
+            print(num)
+            found = True
+            break
+    
+    if not found:
+        print(-1)
