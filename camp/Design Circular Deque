@@ -1,0 +1,129 @@
+class Node:
+    def __init__(self, value=None):
+        self.value = value
+        self.next = None
+
+class MyCircularDeque:
+
+    def __init__(self, k: int):
+        self.head = None
+        self.tail = None
+        self.size = 0
+        self.k = k
+        
+
+    def insertFront(self, value: int) -> bool:
+
+        if self.size == self.k:
+            return False
+
+        new_node = Node(value)
+
+        # check if head is empty. if it is empty, our new node becomes our head
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
+            new_node.next = new_node
+
+        else:
+            new_node.next = self.head
+            self.tail.next = new_node
+            self.head = new_node
+        self.size += 1
+        return True
+        
+
+    def insertLast(self, value: int) -> bool:
+        if self.size == self.k:  # Deque is full, should not add any more item
+            return False
+
+        new_node = Node(value)
+        if not self.tail:  # If the deque is empty
+            self.head = new_node
+            self.tail = new_node
+            new_node.next = new_node  # Pointing to itself
+        else:
+            new_node.next = self.head  # Point new node to head
+            self.tail.next = new_node  # Point previous tail to new node
+            self.tail = new_node  # Update the tail
+
+        self.size += 1
+        return True
+
+
+   
+
+    def deleteFront(self) -> bool:
+        if self.size == 0:
+            return False
+
+        if self.size == 1:  # Only one node in the deque
+            self.head = None
+            self.tail = None
+        else:
+            curr = self.head.next
+            self.head = curr
+            self.tail.next = curr
+            
+        self.size -= 1
+        return True
+
+        
+
+    def deleteLast(self) -> bool:
+        if self.size == 0:
+            return False
+
+        if self.size == 1:  # Only one node in the deque
+            self.head = None
+            self.tail = None
+        else:
+            curr = self.head
+            # Iterate until the second last node
+            while curr.next != self.tail:
+                curr = curr.next
+            curr.next = self.head  # Point second last node to the head
+            self.tail = curr  # Update the tail pointer
+
+        self.size -= 1
+        return True
+  
+
+    def getFront(self) -> int:
+        if self.size == 0:
+            return -1
+        
+        return self.head.value
+        
+
+    def getRear(self) -> int:
+        if self.size == 0:
+            return -1
+        return self.tail.value
+
+
+
+    def isEmpty(self) -> bool:
+        if self.size == 0:
+            return True
+        return False
+        
+        
+
+    def isFull(self) -> bool:
+        if self.size == self.k:
+            return True
+        return False
+        
+
+
+# Your MyCircularDeque object will be instantiated and called as such:
+# obj = MyCircularDeque(k)
+# param_1 = obj.insertFront(value)
+# param_2 = obj.insertLast(value)
+# param_3 = obj.deleteFront()
+# param_4 = obj.deleteLast()
+# param_5 = obj.getFront()
+# param_6 = obj.getRear()
+# param_7 = obj.isEmpty()
+# param_8 = obj.isFull()
