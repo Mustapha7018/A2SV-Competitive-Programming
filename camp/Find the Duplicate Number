@@ -1,13 +1,40 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         
-        hashmap = {}
-        for i in nums:
-            if i not in hashmap:
-                hashmap[i] = 1
-            else:
-                hashmap[i] += 1
+        # O(NLogN)
+        nums.sort()
+        for num in nums:
+            left = bisect_left(nums, num)
+            right = bisect_right(nums, num) - 1
 
-        Keymax = max(hashmap, key = lambda x: hashmap[x])
+            if left != right:
+                return num
 
-        return Keymax
+
+        # O(N)
+        # hashmap = {}
+        # for i in nums:
+        #     if i not in hashmap:
+        #         hashmap[i] = 1
+        #     else:
+        #         hashmap[i] += 1
+
+        # Keymax = max(hashmap, key = lambda x: hashmap[x])
+
+        # return Keymax
+
+
+        
+
+       
+
+
+
+
+
+
+
+
+
+
+        
