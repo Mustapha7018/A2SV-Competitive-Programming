@@ -1,0 +1,23 @@
+def composition():
+    t = int(input())
+    for _ in range(t):
+        a, b = map(int, input().split())
+        
+        left, right = 0, min(a, b)
+        ans = 0
+        
+        while left <= right:
+            mid = left + (right - left) // 2
+            
+            remaining_a = a - mid
+            remaining_b = b - mid
+            
+            if remaining_a + remaining_b >= mid * 2:
+                ans = mid
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        print(ans)
+
+composition()
