@@ -1,0 +1,26 @@
+from itertools import accumulate
+def eating_candies():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        candies = list(map(int, input().split()))
+
+        A = list(accumulate(candies))
+        B = list(accumulate(reversed(candies)))
+
+        res = [0]
+
+        l = r = 0
+        while (l+r) <= len(candies) - 2:
+                if A[l] < B[r]:
+                    l += 1
+                elif A[l] > B[r]:
+                    r += 1
+                else:
+                    res.append(l+r+2)
+                    r += 1
+                    l += 1
+
+        print(max(res))
+
+eating_candies()
