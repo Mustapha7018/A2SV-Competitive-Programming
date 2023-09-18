@@ -1,0 +1,22 @@
+def save_mice():
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        mice = list(map(int, input().split()))
+        mice.sort()
+        curr_mouse = len(mice) - 1
+        cat = 0
+        saved_mice = 0
+
+        while cat < mice[curr_mouse]:
+            dist = n - mice[curr_mouse]
+            cat += dist
+
+            saved_mice += 1
+            mice[curr_mouse] = 0
+            curr_mouse -= 1
+        
+        print(saved_mice)
+        # print(mice)
+
+save_mice()
