@@ -1,0 +1,13 @@
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+
+        def power(n):
+            # basecases can be more than 1
+            if n < 1:
+                return False
+            if n == 1:
+                return True
+            return power(n / 3)
+
+        return power(n)
+        
