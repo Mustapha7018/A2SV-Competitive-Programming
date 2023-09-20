@@ -1,0 +1,25 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # State: x
+
+        memory = {}
+        def power(n):
+            if n in memory:
+                return memory[n]
+            # Base case
+            if n <= 1: return x ** n
+
+            mid = n // 2
+            
+            # recurrence relation
+            res = power(mid) * power(n - mid)
+            memory[n] = res
+
+            return res
+        return power(n)
+
+
+
+
+        
+
