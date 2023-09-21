@@ -6,20 +6,21 @@ class Solution:
         def power(n):
             if n in memory:
                 return memory[n]
-            # Base case
-            if n <= 1: return x ** n
+            
+            # Base cases
+            if n == 0:
+                return 1
+            if n == 1:
+                return x
+            if n == -1:
+                return 1 / x
 
             mid = n // 2
             
-            # recurrence relation
+            # Recurrence relation
             res = power(mid) * power(n - mid)
             memory[n] = res
 
             return res
-        return power(n)
-
-
-
-
         
-
+        return power(n)
