@@ -1,19 +1,31 @@
-from typing import List
-
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        def pascal(row: List[int], rowIndex: int) -> List[int]:
+        # State: rowIndex
+
+        def pascal(row, rowIndex):
+
             # Base Case:
-            if rowIndex == 0:
+            if rowIndex == 0: 
                 return row
 
             # Recurrence Relation:
             newRow = [1]
-            for i in range(len(row) - 1):
-                newRow.append(row[i] + row[i + 1])
+            for i in range(len(row)-1):
+                newRow.append(row[i] + row[i+1])
             newRow.append(1)
-
             return pascal(newRow, rowIndex - 1)
-
+            
         return pascal([1], rowIndex)
 
+
+
+
+
+ 
+
+
+
+            
+
+            
+        
