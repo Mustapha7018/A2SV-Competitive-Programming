@@ -1,0 +1,9 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        left = bisect_left(nums, target)
+        right = bisect_right(nums, target) - 1  # subtract 1 since bisect_right gives an index after the last occurrence
+        
+        if left <= right:
+            return [left, right]
+        else:
+            return [-1, -1]
