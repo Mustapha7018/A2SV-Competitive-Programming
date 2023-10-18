@@ -1,0 +1,19 @@
+def strength():
+    energy.sort()
+    
+    sub_sum = 0
+    
+    for i in range(n):
+ 
+        if energy[i] > sub_sum + 1:
+            return sub_sum + 1
+        
+        sub_sum += energy[i]
+    
+ 
+    return sub_sum + 1
+ 
+if __name__ == '__main__':
+    n = int(input())
+    energy = list(map(int, input().split()))
+    print(strength())
