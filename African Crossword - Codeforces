@@ -1,0 +1,31 @@
+def african_crossword():
+    n, m = map(int, input().split())
+    grid = [list(input()) for _ in range(n)]
+    enc_string = ''
+
+    for i in range(n):
+        for j in range(m):
+            found_duplicate = False
+            for k in range(n):
+                if k != i and grid[k][j] == grid[i][j]:
+                    found_duplicate = True
+                    break
+            if not found_duplicate:
+                for k in range(m):
+                    if k != j and grid[i][k] == grid[i][j]:
+                        found_duplicate = True
+                        break
+            if not found_duplicate:
+                enc_string += grid[i][j]
+
+    return enc_string
+
+if __name__ == '__main__':
+    print(african_crossword())
+
+
+'''
+Time complexity : O(N*M (N+M))
+Space complexity: O(N*M)
+
+'''
