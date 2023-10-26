@@ -1,0 +1,93 @@
+# Using @cache decorator from functools
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        
+        @cache
+        def climb(n):
+            if n < 4:
+                return n
+
+            res = climb(n - 1) + climb(n - 2)
+            return res
+    
+        return climb(n)
+
+
+
+# Using Memoization
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+
+        mem = {}
+        
+        def climb(n):
+            if n in mem:
+                return mem[n]
+                
+            if n < 4:
+                return n
+
+            res = climb(n - 1) + climb(n - 2)
+            mem[n] = res
+            return res
+    
+        return climb(n)
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+
+        
+
+
+
+
+        
+
+        
+
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+
+        
+
+
+
+
+        
+
+        
+
+
+
+        
+
+        
+
+
+        
