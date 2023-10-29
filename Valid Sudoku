@@ -3,28 +3,10 @@ class Solution:
 
         res = []
         sudoku = [[int(ele) if ele != '.' else 0 for ele in board] for board in boards]
-        print(sudoku)
 
         for i in range(9):
             for j in range(9):
                 cell = sudoku[i][j]
                 if cell != 0:
-                    res += [(i, cell), (cell, j), (i // 3, j // 3, cell)]
+                    res += [('row', i, cell), ('col', j, cell), ('box', i // 3, j // 3, cell)]
         return len(res) == len(set(res))
-        
-
- 
-
-
-
-
-
-        
-
-        
-
-
-
-            
-
-        
