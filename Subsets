@@ -1,0 +1,24 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+
+        def backtrack(start, candidate):
+            
+            # handle basecases
+            solutions.append(candidate.copy())
+
+            # iterate all possible candidates.
+            for i in range(start, len(nums)):
+                candidate.append(nums[i])
+
+                # given the candidate, explore further
+                backtrack(i+1, candidate)
+
+                # backtrack
+                candidate.pop()
+                
+        solutions = []
+        candidate = []
+        backtrack(0, candidate)
+        return solutions
+
+    
