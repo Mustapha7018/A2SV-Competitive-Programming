@@ -1,0 +1,36 @@
+def equivalent_string(a, b):
+    memory = {}
+
+    def equal(a, b):
+        if (a, b) in memory:
+            return memory[(a, b)]
+
+        # BASE CASE
+        if a == b:
+            memory[(a, b)] = True
+            return True
+
+        if len(a) % 2 == 1:
+            memory[(a, b)] = False
+            return False
+
+        # RECURRENT CASE
+        mid = len(a) // 2
+        a1, a2 = a[:mid], a[mid:]
+        b1, b2 = b[:mid], b[mid:]
+
+        result = (equal(a1, b1) and equal(a2, b2)) or (equal(a1, b2) and equal(a2, b1))
+        memory[(a, b)] = result 
+        return result
+
+    return equal(a, b)
+
+
+if __name__ == '__main__':
+    a = input().strip()
+    b = input().strip()
+
+    if equivalent_string(a, b):
+        print("YES")
+    else:
+        print("NO")
