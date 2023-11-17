@@ -1,0 +1,30 @@
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+
+        hashmap = {}
+
+        for w in words:
+            if w not in hashmap:
+                hashmap[w] = 1
+            
+            else:
+                hashmap[w] += 1
+
+        heap = []
+
+        for c, v in hashmap.items():
+            heappush(heap, (-v, c))
+
+        # print(heap)
+
+        res = []
+        while k > 0:
+            res.append(heappop(heap)[1])
+            k -= 1
+
+        return res
+
+
+
+
+     
