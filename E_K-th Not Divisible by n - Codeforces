@@ -1,0 +1,14 @@
+def kth_not_divisible_by_n():
+
+    a = k // (n - 1)
+
+    b = (k % (n - 1)) if k % (n - 1) != 0 else -1
+
+    return (a * n + b)
+
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        print(kth_not_divisible_by_n())
