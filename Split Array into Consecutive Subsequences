@@ -1,0 +1,13 @@
+class Solution:
+    def isPossible(self, nums: List[int]) -> bool:
+
+        dic = defaultdict(list)
+
+        for num in nums:
+            if dic[num - 1]:
+                heappush(dic[num], heappop(dic[num-1])+1)
+
+            else:
+                heappush(dic[num], 1)
+
+        return not any(length < 3 for length in sum(dic.values(), []))
