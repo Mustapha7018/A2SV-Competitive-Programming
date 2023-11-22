@@ -1,0 +1,31 @@
+class Solution:
+    def findCenter(self, edges: List[List[int]]) -> int:
+        graph = defaultdict(list)
+
+        for k, v in edges:
+            graph[k].append(v)
+            graph[v].append(k)
+
+        
+        visited = set()
+
+        # print(graph)
+
+        n = len(edges)
+
+        def dfs(vertex, visited):
+
+            if len(graph[vertex]) == len(graph.keys()) - 1:
+                return vertex
+
+            visited.add(vertex)
+
+            for neighbor in graph[vertex]:
+                if neighbor not in visited:
+                    return dfs(neighbor, visited)
+
+        return dfs(edges[0][0], visited)
+
+
+
+        
