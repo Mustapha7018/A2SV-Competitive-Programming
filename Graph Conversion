@@ -1,0 +1,67 @@
+from collections import defaultdict
+
+# Conversion from Adjacency List to Adjacency Matrix
+
+def adjacency_list_to_matrix(adj_list):
+
+    matrix = [[0 for _ in range(len(adj_list))] for _ in range(len(adj_list))]
+
+    for k, v in adj_list.items():
+        for n in v:
+            matrix[k][n] = 1
+
+    return matrix
+
+print(adjacency_list_to_matrix({
+    0: [1, 2],
+    1: [2],
+    2: [0, 3],
+    3: [3]
+}))
+
+
+
+
+# Conversion from Adjacency Matrix to Adjacency List
+
+def adjacency_matrix_to_list(adj_matrix):
+
+    res = defaultdict(list) 
+
+    for row in range(len(adj_matrix)):
+        for col in range(len(adj_matrix[0])):
+
+            if adj_matrix[row][col] == 1:
+
+                res[row].append(col)
+
+    return res
+
+
+print(adjacency_matrix_to_list([
+    [0, 1, 1, 0],
+    [0, 0, 1, 0],
+    [1, 0, 0, 1],
+    [0, 0, 0, 1]
+]
+))
+
+
+
+
+# Conversion from Edge List to Adjacency List
+
+def edge_list_to_adj_list(edj_list):
+
+    graph = defaultdict(list)
+
+    for k, v in edj_list:
+        graph[k].append(v)    
+
+    return graph
+        
+
+print(edge_list_to_adj_list([(0, 1), (0, 2), (1, 2), (2, 0), (2, 3), (3, 3)]))
+
+
+
