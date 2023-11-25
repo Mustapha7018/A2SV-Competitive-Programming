@@ -1,0 +1,28 @@
+def games():
+
+    count = 0
+
+    homes = []
+    aways = []
+
+
+    for teams in mat:
+        homes.append(teams[0])
+        aways.append(teams[1])
+
+    for i in range(len(homes)):
+        for j in range(len(aways)):
+            if homes[i] == aways[j]:
+                count += 1
+
+    return count
+
+
+if __name__ == '__main__':
+    n = int(input())
+    mat = []
+    for _ in range(n):
+        teams = list(map(int, input().split()))
+        mat.append(teams)
+
+    print(games())
