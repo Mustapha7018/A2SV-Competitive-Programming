@@ -1,0 +1,17 @@
+def kings_escape():
+
+    R = n if bx > ax else 1
+    C = n if by > ay else 1
+
+    if (min(R, ax) <= cx <= max(R, ax)) and (min(C, ay) <= cy <= max(C, ay)): return "YES"
+    
+    else: return "NO"
+
+if __name__ == '__main__':
+    n = int(input())
+
+    ax, ay = map(int, input().split())
+    bx, by = map(int, input().split())
+    cx, cy = map(int, input().split())
+
+    print(kings_escape())
