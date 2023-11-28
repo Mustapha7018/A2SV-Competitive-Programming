@@ -1,0 +1,29 @@
+from itertools import accumulate
+
+def clean_up():
+ 
+    presumA = [0] + list(accumulate(weight_A))
+    presumB = [0] + list(accumulate(weight_B))
+
+    max_total_cost = 0
+    i = 0
+ 
+    while A * i <= s and i <= n:
+        total_cost = presumA[i]
+        itemsFromB = min((s - (A*i)) // B, m)
+        total_cost += presumB[itemsFromB]
+
+        max_total_cost = max(max_total_cost, total_cost)
+
+        i += 1
+    
+    return max_total_cost
+ 
+ 
+ 
+if __name__ == '__main__':
+    n, m, s, A, B = map(int, input().split())
+    weight_A = sorted(list(map(int, input().split())), reverse=True)
+    weight_B = sorted(list(map(int, input().split())), reverse=True)
+ 
+    print(clean_up())
