@@ -1,0 +1,28 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        visited = set()
+
+        def dfs(r, c, curr_color):
+            if r < 0 or c < 0 or r >= len(image) or c >= len(image[0]) or image[r][c] != def_color or (r, c) in visited:
+                return
+
+            visited.add((r, c))
+            image[r][c] = color  
+
+            dfs(r + 1, c, def_color)
+            dfs(r - 1, c, def_color)
+            dfs(r, c + 1, def_color)
+            dfs(r, c - 1, def_color)
+
+        def_color = image[sr][sc]
+        dfs(sr, sc, def_color)
+
+        return image
+
+
+
+
+
+            
+
+            
