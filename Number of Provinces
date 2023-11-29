@@ -1,0 +1,44 @@
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+
+        adj_list = defaultdict(list)
+
+        ROWS = len(isConnected)
+        COLS = len(isConnected[0])
+
+        for r in range(ROWS):
+            for c in range(COLS):
+
+                if isConnected[r][c] == 1:
+                    adj_list[r+1].append(c+1)
+
+        visited = set()
+        
+        def dfs(vertex, visited):
+
+            if vertex in visited:
+                return False
+
+            visited.add(vertex)
+            for neighbour in adj_list[vertex]:
+                if neighbour not in visited:
+                    df = dfs(neighbour, visited)
+
+                    if df:
+                        return dfs
+
+        count = 0
+        for k in adj_list:
+            if k not in visited:
+                # print(k)
+                dfs(k, visited)
+                count += 1
+
+        # print(visited)
+            
+        return count
+
+        
+    
+
+                    
