@@ -1,0 +1,33 @@
+def sort_array():
+
+    n = int(input())
+    gift_array = list(map(int, input().split()))
+
+    sorted_version = sorted(gift_array)
+    first = last = -1
+
+    for i in range(n):
+        if gift_array[i] != sorted_version[i]:
+            first = i
+            break
+    for i in range(n - 1, -1, -1):
+        if gift_array[i] != sorted_version[i]:
+            last = i
+            break
+
+    if first == -1 and last == -1:
+        print("yes")
+        print("1 1")
+    else:
+        gift_array[first: last + 1] = reversed(gift_array[first:last + 1])
+        answer = "yes"
+        for i in range(n):
+            if gift_array[i] != sorted_version[i]:
+                answer = "no"
+                break
+        print(answer)
+        if answer == "yes":
+            print(first + 1, last + 1)
+
+
+sort_array()
