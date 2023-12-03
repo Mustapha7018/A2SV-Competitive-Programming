@@ -1,0 +1,20 @@
+def lucky():
+    arr = []
+
+    for i in range(len(ticket)):
+        arr.append(int(ticket[i]))
+
+
+    first = sum(arr[:3])
+    last = sum(arr[3:])
+
+    if first == last:
+        return "YES"
+    else:
+        return "NO"
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        ticket = input()
+        print(lucky())
