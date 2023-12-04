@@ -1,0 +1,20 @@
+def sereja_and_suffixes():
+    n, m = map(int, input().split())
+    array = list(map(int, input().split()))
+    L = [int(input()) for _ in range(m)]
+
+    res = []
+    count = 0
+    seen = set()
+    for i in array[::-1]:
+        if i not in seen:
+            count += 1
+        res.append(count)
+        seen.add(i)
+
+    res.reverse()
+
+    for l in L:
+        print(res[l-1])
+
+sereja_and_suffixes()
