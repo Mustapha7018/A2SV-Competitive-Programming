@@ -1,0 +1,49 @@
+class Solution:
+    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+
+        adj_list = defaultdict(list)
+
+        for k, v in dislikes:
+            adj_list[k].append(v)
+            adj_list[v].append(k)
+        
+        color = [-1] * (n+1)
+        
+        def dfs(node):
+            for neighbor in adj_list[node]:
+                if color[neighbor] == -1:
+                    if color[node] == 1:
+                        color[neighbor] = 0
+                    else:
+                        color[neighbor] = 1
+                    if not dfs(neighbor):
+                        return False    
+                
+                else:
+                    if color[neighbor] == color[node]: return False
+            return True
+
+        for k in adj_list:
+            if color[k] == -1:
+                color[k] = 0
+            
+            if not dfs(k):
+                return False
+        return True
+
+
+                    
+            
+
+
+
+            
+
+
+                
+                
+
+
+
+
+        
