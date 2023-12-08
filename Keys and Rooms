@@ -1,0 +1,32 @@
+# Using BFS
+
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+
+        graph = defaultdict(list)
+
+        for key in range(len(rooms)):
+            graph[key] = rooms[key]
+
+            
+        queue = deque([0])
+        visited = set()
+
+        visited.add(0)
+        
+        while queue:
+            key = queue.popleft()
+
+            for k in graph[key]:
+                if k not in visited:
+                    visited.add(k)
+                    queue.append(k)
+        
+        return len(rooms) == len(visited)
+
+            
+            
+        
+
+
+        
