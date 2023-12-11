@@ -1,0 +1,54 @@
+def kefa_and_park():
+    from collections import defaultdict
+
+    n, m = map(int, input().split())
+    park = list(map(int, input().split()))
+    edge_list = list(map(int, input().split()) for _ in range(n-1))
+
+    adj_list = defaultdict(list)
+
+    for x1, x2 in edge_list:
+        adj_list[x1].append(x2)
+        adj_list[x2].append(x1)
+
+    # consec_cat is consecutive cats
+
+    consec_cat = 0
+    visited = set()
+    res = set()
+
+    def dfs(vertex, consec_cat):
+        nonlocal visited, res
+
+        visited.add(vertex)
+
+        if park[vertex-1] == 1:
+            consec_cat += 1
+        else:
+            consec_cat = 0
+
+        if consec_cat > m:
+            return
+
+        if len(adj_list[vertex]) == 1 and adj_list[vertex][0] in visited:
+            res.add(vertex)
+            
+
+        for vertex in adj_list[vertex]:
+            if vertex not in visited:
+                dfs(vertex, consec_cat)
+    
+    dfs(1, consec_cat)
+
+    print(len(res))
+
+if __name__ == '__main__':
+    import sys, threading
+
+    sys.setrecursionlimit(1 << 30)
+    threading.stack_size(1 << 27)
+    
+    main_thread = threading.Thread(target=kefa_and_park)
+    main_thread.start()
+    main_thread.join()
+
