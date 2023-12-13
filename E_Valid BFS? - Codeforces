@@ -1,0 +1,28 @@
+from collections import defaultdict
+def valid_BFS():
+    graph = defaultdict(set)
+
+    for k, v in edge_list:
+        graph[k].add(v)
+        graph[v].add(k)
+
+    if sequence[0] != 1:
+        return "No"
+
+    length = len(sequence)
+    l, r = 0, 1
+
+    while r < length and l < r:
+        if sequence[r] in graph[sequence[l]]:
+            r += 1
+        else:
+            l += 1
+
+    return "Yes" if r == length else "No"
+
+if __name__ == '__main__':
+    n = int(input())
+    edge_list = list(map(int, input().split()) for _ in range(n-1))
+    sequence = list(map(int, input().split()))
+
+    print(valid_BFS())
