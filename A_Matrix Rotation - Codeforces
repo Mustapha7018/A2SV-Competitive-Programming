@@ -1,0 +1,25 @@
+def rotate_matrix(matrix):
+
+    return [[matrix[1][0], matrix[0][0]], [matrix[1][1], matrix[0][1]]]
+
+def is_beautiful(matrix):
+    return matrix[0][0] < matrix[0][1] and matrix[1][0] < matrix[1][1] and matrix[0][0] < matrix[1][0] and matrix[0][1] < matrix[1][1]
+
+def matrix_rotation(matrix):
+
+    if is_beautiful(matrix):
+        return "YES"
+    
+    for _ in range(3):
+        matrix = rotate_matrix(matrix)
+        if is_beautiful(matrix):
+            return "YES"
+    
+    return "NO"
+
+if __name__ == '__main__':
+    t = int(input())
+
+    for _ in range(t):
+        matrix = [list(map(int, input().split())) for _ in range(2)]
+        print(matrix_rotation(matrix))
