@@ -1,0 +1,7 @@
+def lovely_palindrome():
+
+    return int(n + n[::-1])
+
+if __name__ == '__main__':
+    n = input()
+    print(lovely_palindrome())
