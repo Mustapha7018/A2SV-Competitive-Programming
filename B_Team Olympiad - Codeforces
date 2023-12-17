@@ -1,0 +1,38 @@
+def team_olympiad():
+    comb = [[],[],[]]
+    result = []
+ 
+    for i in range(len(students)):
+ 
+        if students[i] == 1:
+            comb[0].append(i+1)
+ 
+        elif students[i] == 2:
+            comb[1].append(i+1)
+ 
+        else:
+            comb[2].append(i+1)
+ 
+    minn = len(min(comb, key=len))
+ 
+    for i in range(minn):
+        temp = []
+        for j in range(len(comb)):
+            curr = comb[j].pop()
+            temp.append(curr)
+ 
+        result.append(temp)
+ 
+ 
+    if minn == 0:
+        print(minn)
+    else:
+        print(minn)
+        for res in result:
+            print(" ".join(map(str, res)))
+ 
+if __name__ == '__main__':
+    n = int(input())
+    students = list(map(int, input().split()))
+ 
+    team_olympiad()
