@@ -1,0 +1,48 @@
+class Solution:
+    def findAllRecipes(self, recipes: List[str], ingredients: List[List[str]], supplies: List[str]) -> List[str]:
+
+        adj_list = defaultdict(list)
+        queue = deque()
+        hashmap = {}
+        res = []
+
+        for supply in supplies:
+            hashmap[supply] = 0
+
+        for rec in recipes:
+            hashmap[rec] = 0
+
+        for rec in range(len(recipes)):
+            for ing in ingredients[rec]:
+                adj_list[ing].append(recipes[rec])
+                hashmap[recipes[rec]] += 1
+
+
+        for key in hashmap:
+            if hashmap[key] == 0:
+                queue.append(key)
+
+        # print(hashmap)
+        # print(queue)
+
+        while queue:
+            curr_rec =  queue.popleft()
+            if curr_rec not in supplies:
+                res.append(curr_rec)
+
+            for neighbor in adj_list[curr_rec]:
+                hashmap[neighbor] -= 1
+                if hashmap[neighbor] == 0:
+                    queue.append(neighbor)
+
+        return res
+
+
+        
+
+
+
+ 
+
+
+        
