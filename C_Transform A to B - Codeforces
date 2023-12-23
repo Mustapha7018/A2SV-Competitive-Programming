@@ -1,0 +1,32 @@
+def transformation():
+
+    queue = deque([(a, [])])
+
+    while queue:
+
+        for _ in range(len(queue)):
+            curr, output = queue.popleft()
+            if curr == b:
+                output.append(curr)
+                print("YES")
+                print(len(output))
+                print(*output)
+                return
+
+            if curr < b:
+                new_curr = str(curr) + str(1)
+                queue.append((int(new_curr), output+[curr]))
+                queue.append((2 * curr, output+[curr]))
+    
+    print("NO")
+    return
+
+
+if __name__ == '__main__':
+    from collections import deque
+    # import sys
+    # sys.set_int_max_str_digits(100000)
+
+    a, b = map(int, input().split())
+
+    transformation()
