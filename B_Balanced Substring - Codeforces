@@ -1,0 +1,18 @@
+def balanced_substring():
+
+    l = 0
+    while l < len(string)-1:
+        if string[l:l+2] == 'ab' or string[l:l+2] == 'ba':
+            return l+1, l+2
+        l += 1
+
+    return -1, -1
+
+if __name__ == '__main__':
+    t = int(input())
+
+    for _ in range(t):
+        n = int(input())
+        string = input()
+
+        print(*balanced_substring())
