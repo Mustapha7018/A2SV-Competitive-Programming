@@ -1,0 +1,25 @@
+class Solution:
+    def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
+        adj_list = defaultdict(list)
+        queue = deque()
+        hashmap = {i: 0 for i in range(n)}
+        ancestors = [set() for _ in range(n)]
+
+        for src, dest in edges:
+            adj_list[src].append(dest)
+            hashmap[dest] += 1
+
+        for key in hashmap:
+            if hashmap[key] == 0:
+                queue.append(key)
+
+        while queue:
+            node = queue.popleft()
+            for neighbor in adj_list[node]:
+                ancestors[neighbor].add(node)
+                ancestors[neighbor].update(ancestors[node])
+                hashmap[neighbor] -= 1
+                if hashmap[neighbor] == 0:
+                    queue.append(neighbor)
+
+        return [sorted(list(anc_set)) for anc_set in ancestors]
