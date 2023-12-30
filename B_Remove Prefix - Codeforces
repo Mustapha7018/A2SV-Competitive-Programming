@@ -1,0 +1,28 @@
+from collections import deque
+
+def remove_prefix():
+    queue = deque()
+    seen = set()
+    moves = 0
+
+    for num in sequence:
+        queue.append(num)
+
+        if num in seen:
+            while queue:
+                removed = queue.popleft()
+                seen.remove(removed)
+                moves += 1
+                if removed == num:
+                    break
+
+        seen.add(num)
+
+    return moves
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        sequence = list(map(int, input().split()))
+        print(remove_prefix())
