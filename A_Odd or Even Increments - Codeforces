@@ -1,0 +1,26 @@
+def odd_or_even_increments():
+
+    odd = array[0] % 2
+    even = None if len(array) < 2 else array[1] % 2
+
+    for i in range(len(array)):
+        
+        if i % 2 == 0 and array[i] % 2 != odd:
+            return "NO"
+
+        elif i % 2 == 1 and even is not None and array[i] % 2 != even:
+            return "NO"
+
+        else:
+            pass
+
+    return "YES"
+
+if __name__ == '__main__':
+    t = int(input())
+
+    for _ in range(t):
+        n = int(input())
+        array = list(map(int, input().split()))
+
+        print(odd_or_even_increments())
