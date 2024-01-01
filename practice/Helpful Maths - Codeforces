@@ -1,0 +1,15 @@
+def helpful_maths():
+
+    arr = [s[i] for i in range(len(s))]
+    res = [int(i) for i in arr if i != '+']
+
+    sort = sorted(res)
+    sort = [str(i) for i in sort]
+
+    return '+'.join(sort)
+
+    
+if __name__ == '__main__':
+    s = input()
+
+    print(helpful_maths())
