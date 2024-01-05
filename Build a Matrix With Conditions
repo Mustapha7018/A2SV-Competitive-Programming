@@ -1,0 +1,58 @@
+'''
+step1:
+> builed the graph
+step2:
+> count in degree
+step3:
+> 0 indegree will be put in que
+step4:
+>  for each node in que reduce the indegree of its neibors 
+step5: 
+> if 0 indegree will be put in que
+'''
+
+class Solution:
+    def buildMatrix(self, k: int, rowConditions: List[List[int]], colConditions: List[List[int]]) -> List[List[int]]:
+
+    
+        def topSort(k, cond):
+            graph = defaultdict(list)
+            preReq = defaultdict(int)
+
+            for u, v in cond:
+                preReq[v] += 1
+                graph[u].append(v)
+
+            que = deque([i for i in range(1, k+1) if preReq[i] == 0])
+
+            pos = [-1]*(k+1)
+            i = 0
+            while que:
+                node = que.popleft()
+                pos[node] = i
+
+                i += 1
+
+                for neighb in graph[node]:
+
+                    preReq[neighb] -= 1
+                    if preReq[neighb] == 0:
+                        que.append(neighb)
+
+            return pos
+            
+        rowPos = topSort(k, set(map(tuple, rowConditions)))
+        colPos = topSort(k, set(map(tuple, colConditions)))
+
+        mat = [[0]*k for _ in range(k)]
+
+        for i in range(1, k+1):
+            r, c = rowPos[i], colPos[i]
+
+            if r != -1 and c != -1:
+                mat[r][c] = i
+            else:
+                return []
+
+        return mat
+        
