@@ -63,6 +63,9 @@ def solve(deadends, target):
     queue = deque([('0000', 0)])
     seen = set(('0000', 0))
     targetLenth = len(target)
+
+    if '0000' in deadends:
+        return -1
     
     try:
         while queue:
