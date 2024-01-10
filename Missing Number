@@ -1,3 +1,4 @@
+===== APPROACH 1 =====
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
@@ -6,3 +7,49 @@ class Solution:
         actual_sum = sum(nums)
         
         return expected_sum - actual_sum
+
+
+===== APPROACH 2 ===== (CYCLIC SORT)
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        N = len(nums)
+
+        for i in range(N):
+            while nums[i] != i and 0 <= nums[i] < N and nums[nums[i]] != nums[i]:
+                nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
+        
+        for i in range(N):
+            if nums[i] != i:
+                return i
+        
+        return N
+
+
+'''
+* Loop through the length of nums
+* Check if the current num:
+    - is not equal to i and
+    - is in the range 0 <= nums[i] < N and
+    - at nums (nums[nums[i]]) is not equal to the number at that given index
+
+* Next, we loop through N and see if our nums[i] is equal to i
+    - if it is not, we return i
+    - else we return N. Example 2 for intance, [0,1]. since 2 is the only missing item
+
+'''
+
+
+===== APPROACH 3 =====
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        missing = -1
+        
+        for i in range(n+1):
+            if i not in nums:
+                missing = i
+        
+        return missing
+        
+
