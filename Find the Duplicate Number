@@ -43,5 +43,23 @@ class Solution:
             if left != right:
                 return num
 
+
+===== APPROACH 4 (Couter.most_common()) =====
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        counter = Counter(nums)
+
+        duplicate = counter.most_common(2)
+
+        if duplicate:
+            return duplicate[0][0]
+        
+        return -1
+
+'''
+* The most_common method of the Counter class returns a list of tuples.
+* Example 1 returns [(2, 2), (1, 1)] where the first idx of (2, 2) is the nums and the second idx is the count
+
+'''
         
         
