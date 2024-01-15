@@ -14,7 +14,8 @@ class Solution:
             if nums[i] != i+1:
                 output.append(nums[i])
 
-        return sorted(output)
+        return output
+
 
 
 ===== APPROACH 2 (Using insert) =====
