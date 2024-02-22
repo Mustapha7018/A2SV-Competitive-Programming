@@ -1,3 +1,27 @@
+# BOTTOM UP APPROACH
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+
+        dp = [[0 for _ in range(n)] for _ in range(m)]
+
+        dp[-1][-1] = 1
+
+        
+        def bounds(r, c) -> int:
+            if 0 <= r < m and 0 <= c < n:
+                return dp[r][c]
+
+            return 0
+
+        for row in range(m - 1, -1, -1):
+            for col in range(n - 1, -1, -1):
+                dp[row][col] += (bounds(row + 1, col)) + (bounds(row, col + 1))
+
+        return dp[0][0]
+
+
+
+# TOP DOWN APPROACH
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
 
