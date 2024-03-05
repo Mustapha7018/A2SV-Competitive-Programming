@@ -7,8 +7,6 @@
 class Solution:
     def rob(self, root: Optional[TreeNode]) -> int:
 
-        memo = {}
-
         def dp(node):
 
             if not node:
