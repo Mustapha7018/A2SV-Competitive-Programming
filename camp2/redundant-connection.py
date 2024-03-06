@@ -14,8 +14,8 @@ class UnionFind:
 
     
     def union(self, u, v):
-        node1 = self.find(u - 1)
-        node2 = self.find(v - 1)
+        node1 = self.find(u)
+        node2 = self.find(v)
 
         if node1 != node2:
             if self.size[node1] < self.size[node2]:
@@ -36,7 +36,7 @@ class Solution:
             if instance.find(k - 1) == instance.find(v - 1):
                 return [k, v]
 
-            instance.union(k, v)
+            instance.union(k - 1, v - 1)
 
         
 
