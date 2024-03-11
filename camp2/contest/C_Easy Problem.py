@@ -1,7 +1,6 @@
 import sys
 import threading
 from functools import cache
-from collections import defaultdict
 
 sys.setrecursionlimit(1 << 30)
 threading.stack_size(1 << 27)
