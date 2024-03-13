@@ -12,16 +12,14 @@ class Solution:
         visited = set()
 
         while heap:
-            l = len(heap)
-            for _ in range(l):
-                (cost, node) = heappop(heap)
-                visited.add(node)
-                if len(visited) == n:
-                    return cost
+            (cost, node) = heappop(heap)
+            visited.add(node)
+            if len(visited) == n:
+                return cost
 
-                for child in graph[node]:
-                    if child[0] not in visited:
-                        heappush(heap, (cost+child[1], child[0]))
+            for child in graph[node]:
+                if child[0] not in visited:
+                    heappush(heap, (cost+child[1], child[0]))
 
         return -1
 
