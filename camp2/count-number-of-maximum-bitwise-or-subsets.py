@@ -1,7 +1,29 @@
+# using itertools.combinations
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
 
-        maxOR = reduce(lambda x,y: x | y, nums)
+        maxOR = reduce(lambda x, y: x | y, nums)
+        N = len(nums)
+        count = 0
+        
+        for i in range(1, N + 1):
+            subsets = combinations(nums, i)
+
+            for sub in subsets:
+                temp = reduce(lambda x, y: x | y, sub)
+
+                if temp == maxOR:
+                    count += 1
+
+        return count
+
+
+
+# Backtracking approach
+class Solution:
+    def countMaxOrSubsets(self, nums: List[int]) -> int:
+
+        maxOR = reduce(lambda x, y: x | y, nums)
 
         array = []
         N = len(nums)
